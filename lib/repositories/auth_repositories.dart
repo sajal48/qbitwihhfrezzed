@@ -45,7 +45,7 @@ class AuthRepository implements BaseAuthRepository {
   Future<void> signOut() async {
     try {
       await _read(firebaseAuthProvider).signOut();
-      await signInAnnonymously();
+      await Future.delayed(const Duration(milliseconds: 500));
     } on FirebaseAuthException catch (e) {
       throw CustomException(message: e.message);
     }
